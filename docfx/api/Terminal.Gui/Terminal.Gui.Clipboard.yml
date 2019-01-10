@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Clipboard
+  id: Clipboard
+  children:
+  - Terminal.Gui.Clipboard.Contents
+  langs:
+  - csharp
+  name: Clipboard
+  nameWithType: Clipboard
+  fullName: Terminal.Gui.Clipboard
+  type: Class
+  assemblies:
+  - Terminal.Gui
+  namespace: Terminal.Gui
+  syntax:
+    content: public static class Clipboard
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers: []
+- uid: Terminal.Gui.Clipboard.Contents
+  id: Contents
+  parent: Terminal.Gui.Clipboard
+  langs:
+  - csharp
+  name: Contents
+  nameWithType: Clipboard.Contents
+  fullName: Clipboard.Contents
+  type: Property
+  assemblies:
+  - Terminal.Gui
+  namespace: Terminal.Gui
+  syntax:
+    content: public static NStack.ustring Contents { get; set; }
+    return:
+      type: NStack.ustring
+      description: To be added.
+  overload: Terminal.Gui.Clipboard.Contents*
+  exceptions: []
+references:
+- uid: System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Terminal.Gui.Clipboard.Contents
+  parent: Terminal.Gui.Clipboard
+  isExternal: false
+  name: Contents
+  nameWithType: Clipboard.Contents
+  fullName: Clipboard.Contents
+- uid: NStack.ustring
+  parent: NStack
+  isExternal: true
+  name: ustring
+  nameWithType: ustring
+  fullName: NStack.ustring
+- uid: Terminal.Gui.Clipboard.Contents*
+  parent: Terminal.Gui.Clipboard
+  isExternal: false
+  name: Contents
+  nameWithType: Clipboard.Contents
+  fullName: Clipboard.Contents

@@ -1,0 +1,154 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.MenuBarItem
+  id: MenuBarItem
+  children:
+  - Terminal.Gui.MenuBarItem.#ctor(NStack.ustring,Terminal.Gui.MenuItem[])
+  - Terminal.Gui.MenuBarItem.Children
+  - Terminal.Gui.MenuBarItem.Title
+  langs:
+  - csharp
+  name: MenuBarItem
+  nameWithType: MenuBarItem
+  fullName: Terminal.Gui.MenuBarItem
+  type: Class
+  assemblies:
+  - Terminal.Gui
+  namespace: Terminal.Gui
+  summary: A menu bar item contains other menu items.
+  syntax:
+    content: public class MenuBarItem
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers: []
+- uid: Terminal.Gui.MenuBarItem.#ctor(NStack.ustring,Terminal.Gui.MenuItem[])
+  id: '#ctor(NStack.ustring,Terminal.Gui.MenuItem[])'
+  parent: Terminal.Gui.MenuBarItem
+  langs:
+  - csharp
+  name: MenuBarItem(ustring, MenuItem[])
+  nameWithType: MenuBarItem.MenuBarItem(ustring, MenuItem[])
+  fullName: MenuBarItem.MenuBarItem(ustring, MenuItem[])
+  type: Constructor
+  assemblies:
+  - Terminal.Gui
+  namespace: Terminal.Gui
+  syntax:
+    content: public MenuBarItem (NStack.ustring title, Terminal.Gui.MenuItem[] children);
+    parameters:
+    - id: title
+      type: NStack.ustring
+      description: To be added.
+    - id: children
+      type: Terminal.Gui.MenuItem[]
+      description: To be added.
+  overload: Terminal.Gui.MenuBarItem.#ctor*
+  exceptions: []
+- uid: Terminal.Gui.MenuBarItem.Children
+  id: Children
+  parent: Terminal.Gui.MenuBarItem
+  langs:
+  - csharp
+  name: Children
+  nameWithType: MenuBarItem.Children
+  fullName: MenuBarItem.Children
+  type: Property
+  assemblies:
+  - Terminal.Gui
+  namespace: Terminal.Gui
+  summary: Gets or sets the children for this MenuBarItem
+  syntax:
+    content: public Terminal.Gui.MenuItem[] Children { get; set; }
+    return:
+      type: Terminal.Gui.MenuItem[]
+      description: The children.
+  overload: Terminal.Gui.MenuBarItem.Children*
+  exceptions: []
+- uid: Terminal.Gui.MenuBarItem.Title
+  id: Title
+  parent: Terminal.Gui.MenuBarItem
+  langs:
+  - csharp
+  name: Title
+  nameWithType: MenuBarItem.Title
+  fullName: MenuBarItem.Title
+  type: Property
+  assemblies:
+  - Terminal.Gui
+  namespace: Terminal.Gui
+  summary: Gets or sets the title to display.
+  syntax:
+    content: public NStack.ustring Title { get; set; }
+    return:
+      type: NStack.ustring
+      description: The title.
+  overload: Terminal.Gui.MenuBarItem.Title*
+  exceptions: []
+references:
+- uid: System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Terminal.Gui.MenuBarItem.#ctor(NStack.ustring,Terminal.Gui.MenuItem[])
+  parent: Terminal.Gui.MenuBarItem
+  isExternal: false
+  name: MenuBarItem(ustring, MenuItem[])
+  nameWithType: MenuBarItem.MenuBarItem(ustring, MenuItem[])
+  fullName: MenuBarItem.MenuBarItem(ustring, MenuItem[])
+- uid: NStack.ustring
+  parent: NStack
+  isExternal: true
+  name: ustring
+  nameWithType: ustring
+  fullName: NStack.ustring
+- uid: Terminal.Gui.MenuItem
+  name: MenuItem
+  nameWithType: MenuItem
+  fullName: Terminal.Gui.MenuItem
+- uid: Terminal.Gui.MenuItem[]
+  parent: Terminal.Gui
+  isExternal: false
+  name: MenuItem[]
+  nameWithType: MenuItem[]
+  fullName: Terminal.Gui.MenuItem[]
+  spec.csharp:
+  - uid: Terminal.Gui.MenuItem
+    name: MenuItem
+    nameWithType: MenuItem
+    fullName: Terminal.Gui.MenuItem
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: Terminal.Gui.MenuBarItem.Children
+  parent: Terminal.Gui.MenuBarItem
+  isExternal: false
+  name: Children
+  nameWithType: MenuBarItem.Children
+  fullName: MenuBarItem.Children
+- uid: Terminal.Gui.MenuBarItem.Title
+  parent: Terminal.Gui.MenuBarItem
+  isExternal: false
+  name: Title
+  nameWithType: MenuBarItem.Title
+  fullName: MenuBarItem.Title
+- uid: Terminal.Gui.MenuBarItem.#ctor*
+  parent: Terminal.Gui.MenuBarItem
+  isExternal: false
+  name: MenuBarItem
+  nameWithType: MenuBarItem.MenuBarItem
+  fullName: MenuBarItem.MenuBarItem
+- uid: Terminal.Gui.MenuBarItem.Children*
+  parent: Terminal.Gui.MenuBarItem
+  isExternal: false
+  name: Children
+  nameWithType: MenuBarItem.Children
+  fullName: MenuBarItem.Children
+- uid: Terminal.Gui.MenuBarItem.Title*
+  parent: Terminal.Gui.MenuBarItem
+  isExternal: false
+  name: Title
+  nameWithType: MenuBarItem.Title
+  fullName: MenuBarItem.Title
