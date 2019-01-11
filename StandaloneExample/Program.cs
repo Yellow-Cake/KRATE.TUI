@@ -3,11 +3,6 @@ using System;
 using Mono.Terminal;
 
 class Demo {
-	class Box10x : View {
-		public Box10x (int x, int y) : base (new Rect (x, y, 10, 10))
-		{
-		}
-	}
 
 	static void ShowEntries (View container)
 	{
@@ -15,20 +10,6 @@ class Demo {
 			ContentSize = new Size (100, 100),
 			ContentOffset = new Point (-1, -1)
 		};
-
-		// scrollView.Add (new Box10x (0, 0));
-
-		// var progress = new ProgressBar (new Rect (68, 1, 10, 1));
-		// bool timer (MainLoop caller)
-		// {
-		// 	progress.Pulse ();
-		// 	return true;
-		// }
-
-		// Application.MainLoop.AddTimeout (TimeSpan.FromMilliseconds (300), timer);
-
-		// A little convoluted, this is because I am using this to test the
-		// layout based on referencing elements of another view:
 
 		var login = new Label ("Login: ") { X = 3, Y = 6 };
 		var password = new Label ("Password: ") {
@@ -74,33 +55,86 @@ class Demo {
 	public static Label ml;
 	static void Main ()
 	{
-		Application.Init ();
-
+		Application.Init();
 		var top = Application.Top;
-		var tframe = top.Frame;
 
-		var win = new Window ("KRATE"){
-			X = 0,
-			Y = 1,
-			Width = Dim.Fill (),
-			Height = Dim.Fill () - 1
-		};
-		var menu = new MenuBar (new MenuBarItem [] {
-			new MenuBarItem ("File", new MenuItem [] {
-				new MenuItem ("Quit", "", () => { if (Quit ()) top.Running = false; })
+		// Creates the top-level window to show
+		var win = new Window(new Rect(0, 1, top.Frame.Width, top.Frame.Height - 1), "KRATE OFFICIAL");
+		top.Add(win);
+
+		Window LoginView = new Window(new Rect(0, 0, win.Frame.Width - 2, win.Frame.Height - 2), "Login");
+		LoginView.Add(
+			new TextField(14, 2, 40, "Welcome to LoginView")
+		);
+
+		Window BalanceView = new Window(new Rect(0, 0, win.Frame.Width - 2, win.Frame.Height - 2), "Balance");
+		BalanceView.Add(
+			new TextField(14, 2, 40, "Welcome to BalanceView")
+		);
+
+		Window StorageView = new Window(new Rect(0, 0, win.Frame.Width - 2, win.Frame.Height - 2), "Storage");
+		StorageView.Add(
+			new TextField(14, 2, 40, "Welcome to StorageView")
+		);
+
+		Window MinerView = new Window(new Rect(0, 0, win.Frame.Width - 2, win.Frame.Height - 2), "Miner");
+		MinerView.Add(
+			new TextField(14, 2, 40, "Welcome to MinerView")
+		);
+
+		Window CostView = new Window(new Rect(0, 0, win.Frame.Width - 2, win.Frame.Height - 2), "Cost");
+		CostView.Add(
+			new TextField(14, 2, 40, "Welcome to CostView")
+		);
+
+
+		var menu = new MenuBar(new MenuBarItem[] {
+			new MenuBarItem ("_File", new MenuItem [] {
+				new MenuItem ("_Quit", "", () => { top.Running = false; }),
 			}),
-			new MenuBarItem ("View", new MenuItem [] {
-				new MenuItem ("Mining", "", null),
-				new MenuItem ("Storage", "", null),
-				new MenuItem ("Balance", "", null),
-				new MenuItem ("Cost", "", null)
+			new MenuBarItem("Views", new MenuItem [] {
+				new MenuItem ("Balance", "", () => {
+						var subView = win.Subviews[0];
+						subView.RemoveAll();
+
+						win.Add(BalanceView);
+						BalanceView.FocusFirst();
+						BalanceView.LayoutSubviews();
+
+				}),
+				new MenuItem ("Storage", "", () => {
+						var subView = win.Subviews[0];
+						subView.RemoveAll();
+
+						win.Add(StorageView);
+						StorageView.FocusFirst();
+						StorageView.LayoutSubviews();
+
+				}),
+				new MenuItem ("Miner", "", () => {
+						var subView = win.Subviews[0];
+						subView.RemoveAll();
+
+						win.Add(MinerView);
+						MinerView.FocusFirst();
+						MinerView.LayoutSubviews();
+
+				}),
+				new MenuItem ("Cost", "", () => {
+						var subView = win.Subviews[0];
+						subView.RemoveAll();
+
+						win.Add(CostView);
+						CostView.FocusFirst();
+						CostView.LayoutSubviews();
+
+				})
 			})
 		});
 
-		ShowEntries (win);
+		top.Add(menu);
+		win.Add(LoginView);
 
-		top.Add (win, menu);
-		top.Add (menu);
-		Application.Run ();
+		Application.Run();
 	}
 }
