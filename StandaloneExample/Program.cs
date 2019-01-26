@@ -1,5 +1,6 @@
 ﻿using Terminal.Gui;
 using StandaloneExample.Screens;
+using StandaloneExample.Utilities;
 
 class KrateApplication {
 
@@ -66,7 +67,7 @@ class KrateApplication {
 	}
 
 	static Window generateMainWindow(Terminal.Gui.Toplevel applicationTop){
-		return new Window(new Rect(0,1, applicationTop.Frame.Width, applicationTop.Frame.Height -1), "KRATE OFFICIAL");
+		return new Window(new Rect(0,1, Constants.WIDTH, Constants.HEIGHT), "KRATE OFFICIAL");
 	}
 
 	static void Main(){
