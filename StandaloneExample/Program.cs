@@ -1,140 +1,138 @@
 ﻿using Terminal.Gui;
 using System;
 using Mono.Terminal;
+using System.Net;
+using System.IO;
 
-class Demo {
+// Variable format was something like application.xxx.yyy
+// must be HTTP Rest API. Need to build into levelDB as Alpha Version. JSON?
 
-	static void ShowEntries (View container)
-	{
-		var scrollView = new ScrollView (new Rect (50, 10, 20, 8)) {
-			ContentSize = new Size (100, 100),
-			ContentOffset = new Point (-1, -1)
-		};
+class KrateApplication {
 
-		var login = new Label ("Login: ") { X = 3, Y = 6 };
-		var password = new Label ("Password: ") {
-			X = Pos.Left (login),
-			Y = Pos.Bottom (login) + 1
-		};
-		var loginText = new TextField ("") {
-			X = Pos.Right (password),
-			Y = Pos.Top (login),
-			Width = 40
-		};
+	Window mainWindow;
+	MenuBar navigationMenu;
 
-		var passText = new TextField ("") {
-			Secret = true,
-			X = Pos.Left (loginText),
-			Y = Pos.Top (password),
-			Width = Dim.Width (loginText)
-		};
+	KrateApplication(){
+		Application.Init();
+		this.mainWindow = generateMainWindow(Application.Top);
+		this.navigationMenu = new MenuBar(new MenuBarItem[] {
+					new MenuBarItem ("_File", new MenuItem [] {
+						new MenuItem ("_Quit", "", () => { Application.Top.Running = false; }),
+					}),
+					new MenuBarItem("Views", new MenuItem [] {
+						new MenuItem ("Balance", "", () => {
+								var subView = this.mainWindow.Subviews[0];
+								subView.RemoveAll();
 
-		// Add some content
-		container.Add (
-			login,
-			loginText,
-			password,
-			passText,
-			new FrameView (new Rect (3, 10, 25, 6), "Options"){
-				new CheckBox (1, 0, "Remember me"),
-			},
-			scrollView,
-			new Button ("Ok") { X = 3, Y = 19 },
-			new Button ("Cancel") { X = 10, Y = 19 }
-		);
+								var balanceView = BalanceView.generateWindow(this.mainWindow);
+								this.mainWindow.Add(balanceView);
+								balanceView.FocusFirst();
+								balanceView.LayoutSubviews();
 
+						}),
+						new MenuItem ("Storage", "", () => {
+								var subView = this.mainWindow.Subviews[0];
+								subView.RemoveAll();
+
+								var storageView = StorageView.generateWindow(this.mainWindow);
+								this.mainWindow.Add(storageView);
+								storageView.FocusFirst();
+								storageView.LayoutSubviews();
+
+						}),
+						new MenuItem ("Miner", "", () => {
+								var subView = this.mainWindow.Subviews[0];
+								subView.RemoveAll();
+
+								var minerView = MinerView.generateWindow(this.mainWindow);
+								this.mainWindow.Add(minerView);
+								minerView.FocusFirst();
+								minerView.LayoutSubviews();
+
+						}),
+						new MenuItem ("Cost", "", () => {
+								var subView = this.mainWindow.Subviews[0];
+								subView.RemoveAll();
+
+								var costView = CostView.generateWindow(this.mainWindow);
+								this.mainWindow.Add(costView);
+								costView.FocusFirst();
+								costView.LayoutSubviews();
+
+						})
+					})
+			});
 	}
 
-	static bool Quit ()
-	{
-		var n = MessageBox.Query (50, 7, "Quit Demo", "Are you sure you want to quit this demo?", "Yes", "No");
+
+
+	static bool shouldQuit(){
+		var n = MessageBox.Query(50,7, "Quit Demo", "Are you sure you want to quit the demo?", "Yes", "No");
 		return n == 0;
 	}
 
+	static Window generateMainWindow(Terminal.Gui.Toplevel applicationTop){
+		return new Window(new Rect(0,1, applicationTop.Frame.Width, applicationTop.Frame.Height -1), "KRATE OFFICIAL");
+	}
 
-	public static Label ml;
-	static void Main ()
-	{
-		Application.Init();
-		var top = Application.Top;
+	static void Main(){
+		KrateApplication TUI = new KrateApplication();
+		Application.Top.Add(TUI.mainWindow);
+		Application.Top.Add(TUI.navigationMenu);
 
-		// Creates the top-level window to show
-		var win = new Window(new Rect(0, 1, top.Frame.Width, top.Frame.Height - 1), "KRATE OFFICIAL");
-		top.Add(win);
-
-		Window LoginView = new Window(new Rect(0, 0, win.Frame.Width - 2, win.Frame.Height - 2), "Login");
-		LoginView.Add(
-			new TextField(14, 2, 40, "Welcome to LoginView")
-		);
-
-		Window BalanceView = new Window(new Rect(0, 0, win.Frame.Width - 2, win.Frame.Height - 2), "Balance");
-		BalanceView.Add(
-			new TextField(14, 2, 40, "Welcome to BalanceView")
-		);
-
-		Window StorageView = new Window(new Rect(0, 0, win.Frame.Width - 2, win.Frame.Height - 2), "Storage");
-		StorageView.Add(
-			new TextField(14, 2, 40, "Welcome to StorageView")
-		);
-
-		Window MinerView = new Window(new Rect(0, 0, win.Frame.Width - 2, win.Frame.Height - 2), "Miner");
-		MinerView.Add(
-			new TextField(14, 2, 40, "Welcome to MinerView")
-		);
-
-		Window CostView = new Window(new Rect(0, 0, win.Frame.Width - 2, win.Frame.Height - 2), "Cost");
-		CostView.Add(
-			new TextField(14, 2, 40, "Welcome to CostView")
-		);
-
-
-		var menu = new MenuBar(new MenuBarItem[] {
-			new MenuBarItem ("_File", new MenuItem [] {
-				new MenuItem ("_Quit", "", () => { top.Running = false; }),
-			}),
-			new MenuBarItem("Views", new MenuItem [] {
-				new MenuItem ("Balance", "", () => {
-						var subView = win.Subviews[0];
-						subView.RemoveAll();
-
-						win.Add(BalanceView);
-						BalanceView.FocusFirst();
-						BalanceView.LayoutSubviews();
-
-				}),
-				new MenuItem ("Storage", "", () => {
-						var subView = win.Subviews[0];
-						subView.RemoveAll();
-
-						win.Add(StorageView);
-						StorageView.FocusFirst();
-						StorageView.LayoutSubviews();
-
-				}),
-				new MenuItem ("Miner", "", () => {
-						var subView = win.Subviews[0];
-						subView.RemoveAll();
-
-						win.Add(MinerView);
-						MinerView.FocusFirst();
-						MinerView.LayoutSubviews();
-
-				}),
-				new MenuItem ("Cost", "", () => {
-						var subView = win.Subviews[0];
-						subView.RemoveAll();
-
-						win.Add(CostView);
-						CostView.FocusFirst();
-						CostView.LayoutSubviews();
-
-				})
-			})
-		});
-
-		top.Add(menu);
-		win.Add(LoginView);
+		TUI.mainWindow.Add(LoginView.generateWindow(TUI.mainWindow));
 
 		Application.Run();
+
+	}
+}
+
+class LoginView {
+	public static Window generateWindow(Window baseWindow){
+		Window loginView = new Window(new Rect(0, 0, baseWindow.Frame.Width - 2, baseWindow.Frame.Height - 2), "Login");
+		loginView.Add(
+			new TextField(14,2,40, "Welcome to login view")
+		);
+		return loginView;
+	}
+}
+
+class BalanceView {
+	public static Window generateWindow(Window baseWindow){
+		Window balanceView = new Window(new Rect(0, 0, baseWindow.Frame.Width - 2, baseWindow.Frame.Height - 2), "Balance");
+		balanceView.Add(
+			new TextField(14, 2, 40, "Welcome to BalanceView")
+		);
+		return balanceView;
+	}
+}
+
+class StorageView {
+	public static Window generateWindow(Window baseWindow){
+		Window storageView = new Window(new Rect(0, 0, baseWindow.Frame.Width - 2, baseWindow.Frame.Height - 2), "Storage");
+		storageView.Add(
+			new TextField(14, 2, 40, "Welcome to StorageView")
+		);
+		return storageView;
+	}
+}
+
+class MinerView {
+	public static Window generateWindow(Window baseWindow){
+		Window minerView = new Window(new Rect(0, 0, baseWindow.Frame.Width - 2, baseWindow.Frame.Height - 2), "Miner");
+		minerView.Add(
+			new TextField(14, 2, 40, "Welcome to Miner View")
+		);
+		return minerView;
+	}
+}
+
+class CostView {
+	public static Window generateWindow(Window baseWindow){
+		Window costView = new Window(new Rect(0, 0, baseWindow.Frame.Width - 2, baseWindow.Frame.Height - 2), "Balance");
+		costView.Add(
+			new TextField(14, 2, 40, "Welcome to Cost View")
+		);
+		return costView;
 	}
 }
