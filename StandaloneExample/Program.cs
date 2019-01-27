@@ -15,14 +15,14 @@ class KrateApplication {
 				new MenuItem ("_Quit", "", () => { Application.Top.Running = false; }),
 			}),
 			new MenuBarItem("Views", new MenuItem [] {
-				new MenuItem ("Balance", "", () => {
+			    	new MenuItem ("Dashboard", "", () => {
 						var subView = this.mainWindow.Subviews[0];
 						subView.RemoveAll();
 
-						var balanceView = BalanceView.generateWindow(this.mainWindow);
-						this.mainWindow.Add(balanceView);
-						balanceView.FocusFirst();
-						balanceView.LayoutSubviews();
+						var dashboardView = DashboardView.generateWindow(this.mainWindow);
+						this.mainWindow.Add(dashboardView);
+						dashboardView.FocusFirst();
+						dashboardView.LayoutSubviews();
 
 				}),
 				new MenuItem ("Storage", "", () => {
@@ -45,11 +45,11 @@ class KrateApplication {
 						minerView.LayoutSubviews();
 
 				}),
-				new MenuItem ("Cost", "", () => {
+				new MenuItem ("Send Krates", "", () => {
 						var subView = this.mainWindow.Subviews[0];
 						subView.RemoveAll();
 
-						var costView = CostView.generateWindow(this.mainWindow);
+						var costView = SendView.generateWindow(this.mainWindow);
 						this.mainWindow.Add(costView);
 						costView.FocusFirst();
 						costView.LayoutSubviews();

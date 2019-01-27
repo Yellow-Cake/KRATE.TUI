@@ -9,7 +9,7 @@ namespace StandaloneExample.Screens {
 	    Window dashboardView = new Window(new Rect(0, 0, baseWindow.Frame.Width - 2, baseWindow.Frame.Height - 2), "Dashboard");
 
 	    var wallet = generateWalletWindow();
-	    var transactions = generateTransactionsWindow();
+	    var transactions = generateTransactionsWindow(baseWindow);
 
 	    dashboardView.Add(
 		wallet,
@@ -18,22 +18,33 @@ namespace StandaloneExample.Screens {
 	    return dashboardView;
 	}
 
-	public static Window generateTransactionsWindow() {
+	public static Window generateTransactionsWindow(Window baseWindow) {
 	    Window transWindow = new Window(new Rect(0, 7, 65, 10), "Recent Transactions");
 
 
-	    var transactionAmount = new TextView(new Rect(1, 0, 40, 1)) {
-		Text = "-5.0000 KRATE(S)",
-		ReadOnly  = true
-	    };
-	    
-	    var transactionRecipient = new TextView(new Rect(1, 1, 40, 1)) {
-		Text = "To: c652076704f4c1d4ea6dd75adac850ff",
-		ReadOnly = true
-	    };
+	    for(int i  = 0; i < 4; i+= 2) {
 
-	    var transactionDateTime = new Label(new Rect(20, 0, 20, 1), "01.20.2019 17:01");
-	    transactionDateTime.TextAlignment = TextAlignment.Right;
+		var transactionAmount = new TextView(new Rect(1, i == 0 ? i : i+1, 40, 1)) {
+		    Text = "-5.0000 KRATE(S)",
+		    ReadOnly = true
+		};
+
+		transWindow.Add(transactionAmount);
+
+		var transactionRecipient = new TextView(new Rect(1, i == 0 ? (i+1) : i+1+1, 40, 1)) {
+		    Text = "To: c652076704f4c1d4ea6dd75adac850ff",
+		    ReadOnly = true
+		};
+
+		transWindow.Add(transactionRecipient);
+
+		var transactionDateTime = new Label(new Rect(20, i == 0 ? i : i + 1, 20, 1), "01.20.2019 17:01") {
+		    TextAlignment = TextAlignment.Right
+		};
+
+		transWindow.Add(transactionDateTime);
+
+	    }
 
 	    var seeAllTransactions = new Button("See All Transactions") {
 		X = 0,
@@ -43,6 +54,15 @@ namespace StandaloneExample.Screens {
 	    var sendKrates = new Button("Send Krates") {
 		X = 25,
 		Y = 7,
+		Clicked = () => {
+		    var subView = baseWindow.Subviews[0];
+		    subView.RemoveAll();
+
+		    var costView = DashboardView.generateWindow(baseWindow);
+		    baseWindow.Add(costView);
+		    costView.FocusFirst();
+		    costView.LayoutSubviews();
+		}
 	    };
 
 	    var recieveKrates = new Button("Recieve Krates") {
@@ -50,14 +70,7 @@ namespace StandaloneExample.Screens {
 		Y = 7,
 	    };
 
-	    transWindow.Add(
-	    	transactionAmount,
-		transactionRecipient,
-		transactionDateTime,
-		seeAllTransactions,
-		sendKrates,
-		recieveKrates
-	    );
+	    transWindow.Add(seeAllTransactions,sendKrates,recieveKrates);
 
 	    return transWindow;
 	}

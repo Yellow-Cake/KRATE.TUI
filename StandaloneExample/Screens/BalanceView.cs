@@ -12,6 +12,7 @@ namespace StandaloneExample.Screens {
 		    height: baseWindow.Frame.Height - 2
 	    ),
 		"Balance") {
+		new TextField(5,1,25, "There is no point to this text view."),
 		new TextField(14, 2, 40, "Welcome to BalanceView")
 	    };
 	    foreach (var item in balanceView) {
