@@ -58,7 +58,7 @@ namespace StandaloneExample.Screens {
 		    var subView = baseWindow.Subviews[0];
 		    subView.RemoveAll();
 
-		    var costView = DashboardView.generateWindow(baseWindow);
+		    var costView = SendView.generateWindow(baseWindow);
 		    baseWindow.Add(costView);
 		    costView.FocusFirst();
 		    costView.LayoutSubviews();

@@ -23,21 +23,27 @@ namespace StandaloneExample.Screens {
 		public static Window generateCurrentFilesWindow(Window baseWindow){
 			Window fileStored = new Window(new Rect(0, 0, 70, 14), "Current Files");
 
-			
-	    	fileStored.Add(
-				new TextField(0, 1, 20, "Homework.docx"),
-				new TextField(0, 2, 20, "FamilyPhotos.png"),
-				new TextField(0, 3, 20, "TakeOverTheWorld.pdf")
+	    var listFiles = new ListView(new Rect(0, 1, 65, 12), new string[] {
+		"FamilyPictures/",
+		"resume.docx",
+		"sindhi_book.pdf",
+		"MyMusic/",
+		"Screen Shot 2018-01-09 at 3..38.55 PM.png",
+		"DoNotEnterHere/"
+		});
 
-				);
-			return fileStored;
+
+			
+	    	fileStored.Add(listFiles);
+	    	return fileStored;
+		
 		}
 
 
 		public static Window generateOptionsMenuWindow(Window baseWindow) { 
 			Window optionsWindow = new Window(new Rect(0, 14, 70, 3), "Options");
 	    	
-			var uploadButton = new Button("Upload"){
+			var uploadButton = new Button("Upload New"){
 				X = 0,
 				Y = 0
 			};
