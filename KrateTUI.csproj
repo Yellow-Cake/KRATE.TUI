@@ -12,7 +12,4 @@
   <ItemGroup>
     <Folder Include="Screens\" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Screens\EmptyClass.cs" />
-  </ItemGroup>
 </Project>
