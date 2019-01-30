@@ -1,41 +1,41 @@
 ﻿using Terminal.Gui;
 
 namespace StandaloneExample.Screens {
-    class StorageView {
+    class TransactionsView {
 		public static Window generateWindow(Window baseWindow)
 		{
-			Window storageView = new Window(new Rect(0, 0, baseWindow.Frame.Width - 2, baseWindow.Frame.Height - 2), "Storage");
+			Window transactionsView = new Window(new Rect(0, 0, baseWindow.Frame.Width - 2, baseWindow.Frame.Height - 2), "Transactions View");
 			
-			var currenFilesWindow = generateCurrentFilesWindow(baseWindow);
+			var allTransactionsWindow = generateAllTransactionsWindow(baseWindow);
    			var optionsWindow = generateOptionsMenuWindow(baseWindow);
-	    		var statisticsWindow = generateStatisticsWindow(baseWindow);
 
-			storageView.Add(
-				currenFilesWindow,
-				optionsWindow,
-				statisticsWindow
+			transactionsView.Add(
+                allTransactionsWindow,
+				optionsWindow
 				
 			);
 			
-			return storageView;
+			return transactionsView;
 		}
 
-		public static Window generateCurrentFilesWindow(Window baseWindow){
-			Window fileStored = new Window(new Rect(0, 0, 70, 14), "Current Files");
+		public static Window generateAllTransactionsWindow(Window baseWindow){
 
-	    var listFiles = new ListView(new Rect(0, 1, 65, 12), new string[] {
-		"FamilyPictures/",
-		"resume.docx",
-		"sindhi_book.pdf",
-		"MyMusic/",
-		"Screen Shot 2018-01-09 at 3..38.55 PM.png",
-		"DoNotEnterHere/"
-		});
+			Window transactionWindow = new Window(new Rect(0, 0, 70, 14), "Transactions");
+
+    	    var listTransactions = new ListView(new Rect(0, 1, 65, 12), new string[] {
+        		"Tranaction 1",
+                "Tranaction 2",
+                "Tranaction 3",
+                "Tranaction 4",
+                "Tranaction 5",
+                "Tranaction 6",
+                "Tranaction 7",
+            });
 
 
-			
-	    	fileStored.Add(listFiles);
-	    	return fileStored;
+
+            transactionWindow.Add(listTransactions);
+	    	return transactionWindow;
 		
 		}
 
@@ -43,25 +43,21 @@ namespace StandaloneExample.Screens {
 		public static Window generateOptionsMenuWindow(Window baseWindow) { 
 			Window optionsWindow = new Window(new Rect(0, 14, 70, 3), "Options");
 	    	
-			var uploadButton = new Button("Upload New"){
+			var option1 = new Button("Option 1"){
 				X = 0,
 				Y = 0
 			};
-			optionsWindow.Add(uploadButton);
+
+            var option2 = new Button("Option 2")
+            {
+                X = 0,
+                Y = 2
+            };
+            optionsWindow.Add(option1,option2);
 
 	    	return optionsWindow;	
 		}
 
-		public static Window generateStatisticsWindow(Window baseWindow) { 
-			Window statsWindow = new Window(new Rect(0, 17, 70, 3), "Statistics");
-	    	
-				var costPerDay = new TextView( new Rect(0,0,70,1)){
-					Text = "0.12 K/day"
-				};
-				statsWindow.Add(costPerDay);		
-
-	    		return statsWindow;	
-		}
     }
 
 }

@@ -51,26 +51,23 @@ namespace StandaloneExample.Screens {
 		Y = 7
 	    };
 
-	    var sendKrates = new Button("Send Krates") {
-		X = 25,
-		Y = 7,
-		Clicked = () => {
-		    var subView = baseWindow.Subviews[0];
-		    subView.RemoveAll();
+            var sendKrates = new Button("Send Krates")
+            {
+                X = 25,
+                Y = 7,
+                Clicked = () =>
+                {
+                    var subView = baseWindow.Subviews[0];
+                    subView.RemoveAll();
 
-		    var costView = SendView.generateWindow(baseWindow);
-		    baseWindow.Add(costView);
-		    costView.FocusFirst();
-		    costView.LayoutSubviews();
-		}
-	    };
+                    var costView = SendView.generateWindow(baseWindow);
+                    baseWindow.Add(costView);
+                    costView.FocusFirst();
+                    costView.LayoutSubviews();
+                }
+            };
 
-	    var recieveKrates = new Button("Recieve Krates") {
-		X = 40,
-		Y = 7,
-	    };
-
-	    transWindow.Add(seeAllTransactions,sendKrates,recieveKrates);
+	    transWindow.Add(seeAllTransactions,sendKrates);
 
 	    return transWindow;
 	}
