@@ -23,19 +23,8 @@ class KrateApplication {
 						this.mainWindow.Add(dashboardView);
 						dashboardView.FocusFirst();
 						dashboardView.LayoutSubviews();
-
-				}),
-				new MenuItem ("Storage", "", () => {
-						var subView = this.mainWindow.Subviews[0];
-						subView.RemoveAll();
-
-						var storageView = StorageView.generateWindow(this.mainWindow);
-						this.mainWindow.Add(storageView);
-						storageView.FocusFirst();
-						storageView.LayoutSubviews();
-
-				}),
-				new MenuItem ("Miner", "", () => {
+            }),
+             new MenuItem ("Miner", "", () => {
 						var subView = this.mainWindow.Subviews[0];
 						subView.RemoveAll();
 
