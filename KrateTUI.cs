@@ -43,8 +43,18 @@ class KrateApplication {
 						costView.FocusFirst();
 						costView.LayoutSubviews();
 
-				})
-			})
+				}),
+                new MenuItem ("All Transactions", "", () => {
+                    var subView = this.mainWindow.Subviews[0];
+                    subView.RemoveAll();
+
+                    var transactionsView = TransactionsView.generateWindow(this.mainWindow);
+                    this.mainWindow.Add(transactionsView);
+                    transactionsView.FocusFirst();
+                    transactionsView.LayoutSubviews();
+
+            })
+            })
 		});
 	}
 
