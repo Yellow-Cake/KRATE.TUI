@@ -8,8 +8,8 @@ namespace StandaloneExample.Screens {
 	public static Window generateWindow(Window baseWindow)
 	{
 	    Window loginView = new Window(new Rect(0, 0, baseWindow.Frame.Width - 2, baseWindow.Frame.Height - 2), "Login");
-	    var login = new Label("Login: ") { X = 3, Y = 6 };
-	    var password = new Label("Password: ") {
+	    var login = new Label("Wallet Name: ") { X = 3, Y = 6 };
+	    var password = new Label("Wallet Password: ") {
 		X = Pos.Left(login),
 		Y = Pos.Bottom(login) + 1
 	    };
@@ -25,9 +25,9 @@ namespace StandaloneExample.Screens {
 		Width = Dim.Width(loginText)
 	    };
 
-	    var loginButton = new Button("Login") { 
-	    	X = 3, 
-	    	Y = 19, 
+	    var loginButton = new Button("Login") {
+	    	X = 3,
+	    	Y = 19,
 	    	IsDefault = true,
 	    	Clicked = () => {
 			var subView = baseWindow.Subviews[0];
