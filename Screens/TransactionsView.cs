@@ -1,6 +1,6 @@
 ﻿using Terminal.Gui;
 
-namespace StandaloneExample.Screens {
+namespace KrateTUI.Screens {
     class TransactionsView {
 		public static Window generateWindow(Window baseWindow)
 		{
@@ -22,7 +22,7 @@ namespace StandaloneExample.Screens {
 
 			Window transactionWindow = new Window(new Rect(0, 0, 70, 14), "Transactions");
 
-    	    var listTransactions = new ListView(new Rect(0, 1, 65, 12), new string[] {
+    	    var listTransactions = new ListView(new Rect(0, 1, 65, 10), new string[] {
         		"Tranaction 1",
                 "Tranaction 2",
                 "Tranaction 3",
