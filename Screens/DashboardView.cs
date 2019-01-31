@@ -1,7 +1,9 @@
 ﻿using System;
 using Terminal.Gui;
+using KrateTUI.RestClient;
+using Newtonsoft.Json.Linq;
 
-namespace StandaloneExample.Screens {
+namespace KrateTUI.Screens {
 
     public class DashboardView {
 	public static Window generateWindow(Window baseWindow)
@@ -12,8 +14,8 @@ namespace StandaloneExample.Screens {
 	    var transactions = generateTransactionsWindow(baseWindow);
 
 	    dashboardView.Add(
-		wallet,
-		transactions
+    		wallet,
+    		transactions
 	    );
 	    return dashboardView;
 	}
@@ -21,8 +23,9 @@ namespace StandaloneExample.Screens {
 	public static Window generateTransactionsWindow(Window baseWindow) {
 	    Window transWindow = new Window(new Rect(0, 7, 65, 10), "Recent Transactions");
 
-
-	    for(int i  = 0; i < 4; i+= 2) {
+      var transactionsRecord = (JArray)Utility.Get("http://localhost:37220/api/Wallet/spendable-transactions?WalletName=string4&AccountName=account%200")["transactions"];
+      var numTransactions = transactionsRecord.Count;
+	    for(int i  = 0; i < numTransactions; i+= 2) {
 
 		var transactionAmount = new TextView(new Rect(1, i == 0 ? i : i+1, 40, 1)) {
 		    Text = "-5.0000 KRATE(S)",
@@ -46,10 +49,28 @@ namespace StandaloneExample.Screens {
 
 	    }
 
-	    var seeAllTransactions = new Button("See All Transactions") {
+        if(numTransactions < 1) {
+                var noTransactions = new TextView(new Rect(1, 2, 60, 1))
+                {
+                    Text = "YOU DO NOT HAVE ANY TRANSACTIONS",
+                    ReadOnly = true
+                };
+                transWindow.Add(noTransactions);
+            }
+
+            var seeAllTransactions = new Button("See All Transactions") {
 		X = 0,
-		Y = 7
-	    };
+		Y = 7,
+        Clicked = () => {
+            var subView = baseWindow.Subviews[0];
+            subView.RemoveAll();
+
+            var tView = TransactionsView.generateWindow(baseWindow);
+            baseWindow.Add(tView);
+            tView.FocusFirst();
+            tView.LayoutSubviews();
+        }
+            };
 
             var sendKrates = new Button("Send Krates")
             {
@@ -77,43 +98,36 @@ namespace StandaloneExample.Screens {
 	    Window walletView = new Window(new Rect(0, 0, 65, 7), "Wallet");
 
 	    var labelBalance = new TextView(new Rect(1, 0, 29, 1)) {
-		Text = "Balance",
-		ReadOnly = true
+    	    Text = "Confirmed",
+    		  ReadOnly = true
 	    };
-	    var cBalance = new TextView(new Rect(1, 1, 29, 1)) {
-		Text = "863.05307190 KRATES",
-		ReadOnly = true
+      var record = Utility.Get("http://localhost:37220/api/Wallet/balance?WalletName=string4");
+
+      var confirmedBalance = record["balances"][0]["amountConfirmed"].ToString();
+      var cBalance = new TextView(new Rect(1, 1, 29, 1)) {
+        Text = confirmedBalance + " KRATES",
+		      ReadOnly = true
 	    };
 
-	    var cConversionBalance = new TextView(new Rect(1, 2, 29, 1)) {			
-		Text = "0.25028539 BTC ($885.51)",
-		ReadOnly = true
-	    };
 
 	    var uLabelBalance = new TextView(new Rect(30, 0, 30, 1)) {
-		Text = "Unconfirmed",
-		ReadOnly = true
-	    };
-	    var uBalance = new TextView(new Rect(30, 1, 30, 1)) {
-		Text = "863.05307190 KRATES",
-		ReadOnly = true
+      		Text = "Unconfirmed",
+      		ReadOnly = true
 	    };
 
-	    var uConversionBalance = new TextView(new Rect(30, 2, 30, 1)) {
-		Text = "0.2502853988551)",
-	
-		CanFocus = false,
-		ReadOnly = true
+        var unconfirmedBalance = record["balances"][0]["amountUnconfirmed"].ToString();
+	    var uBalance = new TextView(new Rect(30, 1, 30, 1)) {
+      		Text = unconfirmedBalance + " KRATES",
+      		ReadOnly = true
 	    };
+
 
 	    walletView.Add(
 	    	labelBalance,
 		cBalance,
-		cConversionBalance,
 
 		uLabelBalance,
-		uBalance,
-		uConversionBalance);
+		uBalance);
 
 	    return walletView;
 	}
