@@ -1,6 +1,6 @@
 ﻿using Terminal.Gui;
 
-namespace StandaloneExample.Screens {
+namespace KrateTUI.Screens {
     class BalanceView {
     	public static Window generateWindow(Window baseWindow)
 	{
