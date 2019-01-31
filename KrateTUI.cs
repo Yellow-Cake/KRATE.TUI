@@ -1,8 +1,9 @@
 ﻿using Terminal.Gui;
-using StandaloneExample.Screens;
-using StandaloneExample.Utilities;
+using KrateTUI.Screens;
+using KrateTUI.Utilities;
 
 class KrateApplication {
+
 
 	Window mainWindow;
 	MenuBar navigationMenu;
