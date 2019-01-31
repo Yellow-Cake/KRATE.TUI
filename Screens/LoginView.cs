@@ -1,7 +1,7 @@
 ﻿using Terminal.Gui;
-using StandaloneExample.Screens;
+using KrateTUI.Screens;
 
-namespace StandaloneExample.Screens {
+namespace KrateTUI.Screens {
     public class LoginView {
 
 
