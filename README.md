@@ -12,8 +12,8 @@ These instructions assume that you have correctly configured .NET core system se
 `git clone https://github.com/KRATEOfficial/KRATE.TUI.git`
 
 2. Inside the repository, open Terminal for mac OSX or Linux. 
-3. Type the following command to deploy the application: \
-`$dotnet run`
+3. Type the following command to deploy the application (it will also initialize the server): \
+`$ ./startkrate`
 
 This is just a simple test example that shows how to consume
 the gui.cs from a NuGet package and .NET Core project.
