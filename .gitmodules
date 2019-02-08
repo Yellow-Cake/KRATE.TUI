@@ -1,0 +1,3 @@
+[submodule "KRATE.Proof.of.Concept"]
+	path = KRATE.Proof.of.Concept
+	url = git@github.com:KRATEOfficial/KRATE.Proof.of.Concept.git
