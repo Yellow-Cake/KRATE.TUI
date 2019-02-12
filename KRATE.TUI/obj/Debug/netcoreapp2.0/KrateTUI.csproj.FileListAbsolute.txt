@@ -1,0 +1,17 @@
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/bin/Debug/netcoreapp2.0/KrateTUI.deps.json
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/bin/Debug/netcoreapp2.0/KrateTUI.runtimeconfig.json
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/bin/Debug/netcoreapp2.0/KrateTUI.runtimeconfig.dev.json
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/bin/Debug/netcoreapp2.0/KrateTUI.dll
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/bin/Debug/netcoreapp2.0/KrateTUI.pdb
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.csprojAssemblyReference.cache
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.csproj.CoreCompileInputs.cache
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.AssemblyInfoInputs.cache
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.AssemblyInfo.cs
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.dll
+/Users/mwiens/Documents/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.pdb
+/Users/mwiens/Documents/Local/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.csprojAssemblyReference.cache
+/Users/mwiens/Documents/Local/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.csproj.CoreCompileInputs.cache
+/Users/mwiens/Documents/Local/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.AssemblyInfoInputs.cache
+/Users/mwiens/Documents/Local/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.AssemblyInfo.cs
+/Users/mwiens/Documents/Local/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.dll
+/Users/mwiens/Documents/Local/KRATE/currentKrate/KRATE.TUI/obj/Debug/netcoreapp2.0/KrateTUI.pdb

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="7.0.1-beta3" />
+    <PackageReference Include="Terminal.Gui" Version="0.17.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Screens\" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,84 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "556e72b54ec24cd06806f0ddb8d2c05cf3f947ba"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "KrateTUI/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1-beta3",
+          "Terminal.Gui": "0.17.0"
+        },
+        "runtime": {
+          "KrateTUI.dll": {}
+        }
+      },
+      "Newtonsoft.Json/7.0.1-beta3": {
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.1.18503"
+          }
+        }
+      },
+      "NStack.Core/0.11.0": {
+        "runtime": {
+          "lib/netstandard1.5/NStack.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "System.ValueTuple/4.4.0": {},
+      "Terminal.Gui/0.17.0": {
+        "dependencies": {
+          "NStack.Core": "0.11.0",
+          "System.ValueTuple": "4.4.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/Terminal.Gui.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "KrateTUI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/7.0.1-beta3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tEjwbFgNdSS04bWEUtb89J8njX5GWiIhmAhoiuwWagxrfWxCxMzjJoTBBUk+PmEC9ya6Ekv1h/RD5qvFLhBNJA==",
+      "path": "newtonsoft.json/7.0.1-beta3",
+      "hashPath": "newtonsoft.json.7.0.1-beta3.nupkg.sha512"
+    },
+    "NStack.Core/0.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W3P+G96bSAUa9AdCZMvFNjUt0IICkbtGZAj4FaMG/abTH6lgwJNT7WvCng4ZCKn9yMMotslQnfsT1d3/PAyK3A==",
+      "path": "nstack.core/0.11.0",
+      "hashPath": "nstack.core.0.11.0.nupkg.sha512"
+    },
+    "System.ValueTuple/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BahUww/+mdP4ARCAh2RQhQTg13wYLVrBb9SYVgW8ZlrwjraGCXHGjo0oIiUfZ34LUZkMMR+RAzR7dEY4S1HeQQ==",
+      "path": "system.valuetuple/4.4.0",
+      "hashPath": "system.valuetuple.4.4.0.nupkg.sha512"
+    },
+    "Terminal.Gui/0.17.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1271Ww+BJEEKT0fYOSogl6KOevqWlgmeAMJEz79XdH4R6MfR6SIPyv1dZ4A5qLuHdo4miIlzO29k0rJ/z3HVIw==",
+      "path": "terminal.gui/0.17.0",
+      "hashPath": "terminal.gui.0.17.0.nupkg.sha512"
+    }
+  }
+}
