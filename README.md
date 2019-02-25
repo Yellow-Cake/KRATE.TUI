@@ -30,7 +30,7 @@ If you are using a Windows OS:
 
 5. In MVS, click drop down menu Build --> Rebuild All.
 
-6. Than click the Run dropdown menu --> Start without debugging. 
+6. Then click the Run dropdown menu --> Start without debugging. 
 
 
 # DEVELOPMENT
