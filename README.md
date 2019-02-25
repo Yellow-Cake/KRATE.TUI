@@ -41,7 +41,7 @@ If you are using a Windows OS:
 # DESIGN
 [Under construction]
 
-1. The design will be consider as default. Please differ to www.krate.com for more feedback or stay tuned for updates.
+1. The design will be considered as default. Please differ to www.krate.com for more feedback or stay tuned for updates.
 
 # API
 [Under construction]
